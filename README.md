@@ -1,6 +1,16 @@
 # Frequency Analysis of Words
 
-[TODO. There will be project description]
+The script finds the most popular words in the text
+
+# Quickstart
+The example of script launch on Linux, Python 3.5 and you need default.txt or you can specify a different file name:
+
+```#!bash
+
+python3 lang_frequency.py your_book.txt
+Файл your_book.txt не существует
+
+```
 
 # Project Goals
 
