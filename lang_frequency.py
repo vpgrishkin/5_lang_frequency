@@ -4,27 +4,24 @@ import os
 from collections import Counter
 
 
-DEFAULT_FILE_NAME = 'default.txt'
 DEFAULT_NUMBER_COMMON_WORDS = 10
 
 
 def load_data(file_path):
     with open(file_path, 'rt') as file:
-        file_text = file.read()
-        return file_text.lower()
+        return file.read()
 
 
 def get_most_frequent_words(text):
-    words_from_text = re.findall('\w+', text)
-    most_frequent_words = []
+    words_from_text = re.findall('\w+', text.lower())
     most_frequent_words = Counter(words_from_text).most_common(DEFAULT_NUMBER_COMMON_WORDS)
     return most_frequent_words
 
 
-if __name__ == '__main__':
+def imput_file_name_or_exit():
     if len(sys.argv) == 1:
-        print('Нет параметров для запуска! Файл по умолчанию: {}'.format(DEFAULT_FILE_NAME))
-        work_file = DEFAULT_FILE_NAME
+        print('Нет параметров для запуска')
+        work_file = input('Введите имя файла:')
     else:
         work_file = sys.argv[1]
         if os.path.isfile(work_file):
@@ -33,8 +30,13 @@ if __name__ == '__main__':
     if not os.path.exists(work_file):
         print('Файл {} не существует'.format(work_file))
         sys.exit(1)
+    
+    return work_file
 
-    text = load_data(work_file)
+
+if __name__ == '__main__':
+    work_file_name = imput_file_name_or_exit()
+    text = load_data(work_file_name)
     top10_frequent_words = get_most_frequent_words(text)
     print('10 самых частотных слов:')
     for word in top10_frequent_words:

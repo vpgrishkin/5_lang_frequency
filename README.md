@@ -3,7 +3,7 @@
 The script finds the most popular words in the text
 
 # Quickstart
-The example of script launch on Linux, Python 3.5 and you need default.txt or you can specify a different file name:
+The example of script launch on Linux, Python 3.5 and you need a text file:
 
 ```#!bash
 
