@@ -18,7 +18,7 @@ def get_most_frequent_words(text):
     return most_frequent_words
 
 
-def imput_file_name_or_exit():
+def input_file_name_or_exit():
     if len(sys.argv) == 1:
         print('Нет параметров для запуска')
         work_file = input('Введите имя файла:')
@@ -34,10 +34,14 @@ def imput_file_name_or_exit():
     return work_file
 
 
-if __name__ == '__main__':
-    work_file_name = imput_file_name_or_exit()
-    text = load_data(work_file_name)
-    top10_frequent_words = get_most_frequent_words(text)
-    print('10 самых частотных слов:')
-    for word in top10_frequent_words:
+def print_top_frequent_words(top_frequent_words):
+    print('{} самых частотных слов:'.format(DEFAULT_NUMBER_COMMON_WORDS))
+    for word in top_frequent_words:
         print('Слово {} встречается {} раз.'.format(word[0], word[1]))
+
+
+if __name__ == '__main__':
+    work_file_name = input_file_name_or_exit()
+    text = load_data(work_file_name)
+    top_frequent_words = get_most_frequent_words(text)
+    print_top_frequent_words(top_frequent_words)
